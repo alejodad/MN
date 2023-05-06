@@ -14,9 +14,6 @@ if(!empty($_POST)){
 
   //guardando los valores de los inputs
 $metodo=$_POST["metodo"];
-$valorX_puntoA=$_POST["input1"];
-$tol=$_POST["input2"];
-$nVeces=$_POST["input3"];
 
   
 
@@ -25,32 +22,23 @@ $nVeces=$_POST["input3"];
   switch ($metodo) {
   case 1:
     $file= dirname(__FILE__).'/MetodoNewton.py';
-    
-$cmd = "python";
-$args = [
-    "$file",
-    "$valorX_puntoA",
-    "$tol",
-    "$nVeces",
-    "$expresion"
-];
-  $escaped_args = implode(" ", array_map("escapeshellarg", $args));
-$command = "python '/home/runner/MN/MetodoNewton.py' '3.1416' '0.0000001' '10' '0*x**3+10*x**2-3*x+2'";
-$output = "";
-exec($command, $output);
-echo implode("\n", $output);
+    exec(returnComand($metodo,$file,$expresion), $output);
+    echo implode("\n", $output);
     break;
   case 2:
-    $resultado = shell_exec('whoami');
-    echo "<pre>$resultado</pre>";
+    $file= dirname(__FILE__).'/MetodoBiseccion.py';
+    exec(returnComand($metodo,$file,$expresion), $output);
+    echo implode("\n", $output);
     break;
   case 3:
-    $resultado = shell_exec('uptime');
-    echo "<pre>$resultado</pre>";
+    $file= dirname(__FILE__).'/MetodoDeLaSecante.py';
+    exec(returnComand($metodo,$file,$expresion), $output);
+    echo implode("\n", $output);
     break;
   case 4:
-    $resultado = shell_exec('df -h');
-    echo "<pre>$resultado</pre>";
+    $file= dirname(__FILE__).'/MetodoFalsaPosicion.py';
+    exec(returnComand($metodo,$file,$expresion), $output);
+    echo implode("\n", $output);
     break;
   default:
     echo "Opción no válida";
@@ -66,6 +54,44 @@ echo implode("\n", $output);
     return "+$numero";
   } else {
     return "$numero";
+  }
+}
+
+function returnComand($metodo,$file,$expresion){
+  $command="";
+  if($metodo==1){
+    $valorX_puntoA=$_POST["input1"];
+    $tol=$_POST["input2"];
+    $nVeces=$_POST["input3"];
+    $cmd = "python";
+    $args = [
+    "$file",
+    "$valorX_puntoA",
+    "$tol",
+    "$nVeces",
+    "$expresion"
+    ];
+    $escaped_args = implode(" ", array_map("escapeshellarg", $args));
+    $command = "$cmd $escaped_args";
+    return $command;
+  }else{
+    $valorX_puntoA=$_POST["input1"];
+    $puntoB=$_POST["input2"];
+    $tol=$_POST["input3"];
+    $nVeces=$_POST["input4"];
+    $cmd = "python";
+    $args = [
+    "$file",
+    "$valorX_puntoA",
+    "$puntoB",
+    "$tol",
+    "$nVeces",
+    "$expresion"
+    ];
+    $escaped_args = implode(" ", array_map("escapeshellarg", $args));
+    $command = "$cmd $escaped_args";
+    return $command;
+    
   }
 }
 
