@@ -35,7 +35,7 @@ $args = [
     "$expresion"
 ];
   $escaped_args = implode(" ", array_map("escapeshellarg", $args));
-$command = "python '/home/runner/MetodosNumericos/MetodoNewton.py' '3.1416' '0.0000001' '10' '0*x**3+10*x**2-3*x+2'";
+$command = "python '/home/runner/MN/MetodoNewton.py' '3.1416' '0.0000001' '10' '0*x**3+10*x**2-3*x+2'";
 $output = "";
 exec($command, $output);
 echo implode("\n", $output);

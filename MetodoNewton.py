@@ -1,3 +1,4 @@
+import mpmath
 import sympy as sp  # Importa la biblioteca SymPy
 from math import *  # Importa todas las funciones de la biblioteca math
 
@@ -18,7 +19,7 @@ def NewtonRaphson(x0, tol, n, f):
             return  # Sale de la función
             
         x0 = x1  # Actualiza la aproximación anterior
-        print(f'x{k+1} = {x1}')  # Imprime la aproximación actual
+        print(f'x{k+1} = {x1}'+'</br>')  # Imprime la aproximación actual
         
 # Ejemplo de uso de la función con una aproximación inicial de pi, una tolerancia de 10^-7 y un máximo de 10 iteraciones        
 #NewtonRaphson(pi, 0.0000001, 10)
