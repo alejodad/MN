@@ -22,7 +22,7 @@
 <div class="container">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <p class="lead">Primero debes ingresar la ecuación sobre la que se trabajará.</p>
-        <p class="lead">Si tienes una fracción, deberás poner su valor en decimal usando la coma (",") como separador y utilizar 4 o más decimales para obtener mayor precisión. Por ejemplo, 1/3 = 0,3333 o 1/2 = 0,5000.</p>
+        <p class="lead">Si tienes una fracción, deberás poner su valor en decimal usando el punto (".") como separador y utilizar 4 o más decimales para obtener mayor precisión. Por ejemplo, 1/3 = 0.3333 o 1/2 = 0.5000.</p>
         <p>Ingrese los términos según su ecuación:</p>
         <br/><p>Ejemplo: 6x³ - 5x² + 4x - 3</p></br>
         <p>Tendrás la opción de ingresar cada expresión de x. Si no tienes un valor para x³, ingresa 0.</p>

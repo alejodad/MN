@@ -36,13 +36,30 @@ function validarMetodo(){
   if (miSelect.val() === '') {
     alert('Seleccione metodo');
     return;
-  }else{
+  }else if (verificarInputs()){
     $.post("procesaResultado.php", $("#data").serialize(), function(data){
       Swal.fire(data);
          //$('#divEspecifico').html(data);
      });
   }
 }
+
+function verificarInputs() {
+  // Obtener todos los inputs de la página
+  const inputs = document.querySelectorAll('input');
+  
+  // Verificar si todos los inputs tienen un valor
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value === '') {
+      alert('Debe completar todos los campos antes de continuar');
+      return false;
+    }
+  }
+  
+  // Si todos los inputs tienen un valor, continuar con la ejecución
+  return true;
+}
+
 
 
 
