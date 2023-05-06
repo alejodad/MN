@@ -38,7 +38,8 @@ function validarMetodo(){
     return;
   }else{
     $.post("procesaResultado.php", $("#data").serialize(), function(data){
-         $('#divEspecifico').html(data);
+      Swal.fire(data);
+         //$('#divEspecifico').html(data);
      });
   }
 }
