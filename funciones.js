@@ -33,8 +33,11 @@ $(document).ready(function() {
 
 function validarMetodo(){
   var miSelect = $('#metodo');
-  if (miSelect.val() === '') {
-    alert('Seleccione metodo');
+  if (miSelect.val() === '') {Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Debe seleccionar el metodo!'
+})
     return;
   }else if (verificarInputs()){
     $.post("procesaResultado.php", $("#data").serialize(), function(data){
@@ -51,7 +54,11 @@ function verificarInputs() {
   // Verificar si todos los inputs tienen un valor
   for (let i = 0; i < inputs.length; i++) {
     if (inputs[i].value === '') {
-      alert('Debe completar todos los campos antes de continuar');
+      Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Debe completar todos los campos antes de continuar!'
+})
       return false;
     }
   }
