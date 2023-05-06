@@ -18,7 +18,7 @@ $metodo=$_POST["metodo"];
   
 
 
-
+//dependiendo del metodo seleccionado tomara el file  y llamara el comando
   switch ($metodo) {
   case 1:
     $file= dirname(__FILE__).'/MetodoNewton.py';
@@ -57,13 +57,16 @@ $metodo=$_POST["metodo"];
   }
 }
 
+//metodo para retornar el comando de shell
 function returnComand($metodo,$file,$expresion){
   $command="";
   if($metodo==1){
+    //guardando inputs
     $valorX_puntoA=$_POST["input1"];
     $tol=$_POST["input2"];
     $nVeces=$_POST["input3"];
     $cmd = "python";
+    //creando argumentos del comando
     $args = [
     "$file",
     "$valorX_puntoA",
@@ -72,6 +75,7 @@ function returnComand($metodo,$file,$expresion){
     "$expresion"
     ];
     $escaped_args = implode(" ", array_map("escapeshellarg", $args));
+    //armando comando
     $command = "$cmd $escaped_args";
     return $command;
   }else{
